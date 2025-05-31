@@ -14,8 +14,8 @@ exports.addCategory = async (req, res) => {
 
 exports.addSubCategory = async (req, res) => {
   try {
-    const { name, category } = req.body; // ✅ Use 'category' to match frontend
-    const subCategory = new SubCategory({ name, category }); // ✅ Create with 'category'
+    const { name, category } = req.body; 
+    const subCategory = new SubCategory({ name, category }); 
     await subCategory.save();
     res.status(201).json(subCategory);
   } catch (error) {

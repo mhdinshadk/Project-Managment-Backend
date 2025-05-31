@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-const cookieParser = require('cookie-parser'); // ✅ added
+const cookieParser = require('cookie-parser'); 
 
 const authRoutes = require('./routes/authRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
@@ -13,14 +13,14 @@ require('dotenv').config();
 
 const app = express();
 
-// ✅ CORS setup (withCredentials must be allowed)
+// CORS setup 
 app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true,
 }));
 
 app.use(express.json());
-app.use(cookieParser()); // ✅ added
+app.use(cookieParser()); 
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

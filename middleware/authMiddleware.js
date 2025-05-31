@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
     return res.status(401).json({ error: 'No token provided' });
   }
 
-  // Extract token from "Bearer <token>" format
+  
   if (token.startsWith('Bearer ')) {
     token = token.slice(7, token.length).trim();
   }

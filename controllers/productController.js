@@ -8,7 +8,7 @@ exports.addProduct = async (req, res) => {
     const product = new Product({
       name,
       subCategory,
-      variants: JSON.parse(variants), // Parse variants if sent as string
+      variants: JSON.parse(variants), 
       images,
     });
 
@@ -53,7 +53,7 @@ exports.updateProduct = async (req, res) => {
       name,
       subCategory,
       variants: variants ? JSON.parse(variants) : undefined,
-      ...(images && { images }), // Only update images if provided
+      ...(images && { images }), 
     };
 
     const product = await Product.findByIdAndUpdate(id, updateData, { new: true });
@@ -67,7 +67,7 @@ exports.getSingleProduct = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const product = await Product.findById(id).populate('subCategory'); // populate if needed
+    const product = await Product.findById(id).populate('subCategory'); 
     if (!product) {
       return res.status(404).json({ error: 'Product not found' });
     }

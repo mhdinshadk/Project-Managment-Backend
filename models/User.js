@@ -40,12 +40,12 @@ const userSchema = new mongoose.Schema({
 userSchema.pre('save', async function (next) {
   if (this.isModified('password')) {
     try {
-      this.password = await bcrypt.hash(this.password, 12); // Increased salt rounds
+      this.password = await bcrypt.hash(this.password, 12);
     } catch (error) {
       return next(error);
     }
   }
-  this.updatedAt = Date.now(); // Update timestamp
+  this.updatedAt = Date.now(); 
   next();
 });
 
@@ -61,7 +61,7 @@ userSchema.methods.comparePassword = async function (password) {
 // Sanitize user data for safe output
 userSchema.methods.toJSON = function () {
   const user = this.toObject();
-  delete user.password; // Remove password from output
+  delete user.password; 
   return user;
 };
 
