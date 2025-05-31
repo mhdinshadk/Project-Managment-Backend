@@ -14,8 +14,19 @@ require('dotenv').config();
 const app = express();
 
 // CORS setup 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://project-managment-frontend-sigma.vercel.app'
+];
+
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 
