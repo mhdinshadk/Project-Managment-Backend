@@ -2,7 +2,7 @@ Product Management Backend
 
 Overview
 
-This is the backend for a product management application built with Node.js, Express, and MongoDB. It provides RESTful APIs for managing products, including creating, reading, updating, and deleting products, as well as handling subcategories and user authentication. The backend supports file uploads for product images and is deployed at https://project-managment-backend-r4hz.onrender.com.
+This is the backend for a product management application built with Node.js, Express, and MongoDB. It provides RESTful APIs for managing products, including creating, reading, updating, and deleting products, as well as handling subcategories and user authentication. The backend supports file uploads for product images 
 
 Tech Stack
 
