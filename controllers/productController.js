@@ -77,3 +77,25 @@ exports.getSingleProduct = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+exports.updateProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, subCategory, variants, existingImages } = req.body;
+    const images = req.files ? req.files.map((file) => file.path) : [];
+
+    // Combine existing images (if provided) with new images
+    const updateData = {
+      name,
+      subCategory,
+      variants: variants ? JSON.parse(variants) : undefined,
+      images: existingImages ? [...JSON.parse(existingImages), ...images] : images,
+    };
+
+    const product = await Product.findByIdAndUpdate(id, updateData, { new: true });
+    if (!product) return res.status(404).json({ error: 'Product not found' });
+    res.json(product);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
